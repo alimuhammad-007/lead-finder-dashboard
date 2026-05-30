@@ -7,8 +7,8 @@
 
 import { useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { supabase } from './lib/supabase'
-import useStore from './store/useStore'
+import { supabase } from './lib/supabase.js'
+import useStore from './store/useStore.js'
 
 // Pages
 import LoginPage     from './pages/LoginPage.jsx'
