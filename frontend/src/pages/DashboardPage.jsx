@@ -11,8 +11,8 @@ import { ArrowRight, Users, MessageSquare } from 'lucide-react'
 import StatsCards    from '../components/dashboard/StatsCards.jsx'
 import DashboardCharts from '../components/dashboard/DashboardCharts.jsx'
 import ActivityLog   from '../components/dashboard/ActivityLog.jsx'
-import { analyticsAPI } from '../lib/api'
-import useStore from '../store/useStore'
+import { analyticsAPI } from '../lib/api.js'
+import useStore from '../store/useStore.js'
 
 export default function DashboardPage() {
   const {
