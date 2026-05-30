@@ -1,0 +1,149 @@
+/* ============================================================
+   LeadFlow — Global Styles
+   Premium dark SaaS aesthetic
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Reset & Typography ─────────────────────────────── */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-surface-950 text-gray-100 font-body;
+    background-image: theme('backgroundImage.mesh-1');
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: theme('colors.surface.900'); }
+  ::-webkit-scrollbar-thumb {
+    background: theme('colors.surface.600');
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: theme('colors.surface.500'); }
+}
+
+/* ── Reusable Component Classes ──────────────────────────── */
+@layer components {
+
+  /* Glass card — core UI surface */
+  .glass-card {
+    @apply bg-surface-800/60 backdrop-blur-md border border-surface-700/50 rounded-xl;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+
+  /* Elevated glass card */
+  .glass-card-lg {
+    @apply glass-card shadow-card-lg;
+  }
+
+  /* Primary action button */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5
+           bg-brand-400 hover:bg-brand-300
+           text-surface-950 font-semibold rounded-lg text-sm
+           transition-all duration-200 active:scale-95
+           disabled:opacity-40 disabled:cursor-not-allowed;
+    box-shadow: 0 0 16px rgba(0,200,255,0.25);
+  }
+
+  /* Ghost/secondary button */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2
+           border border-surface-600 hover:border-surface-500
+           text-gray-300 hover:text-white rounded-lg text-sm
+           transition-all duration-200 bg-surface-800/40 hover:bg-surface-700/40;
+  }
+
+  /* Danger button */
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-4 py-2
+           bg-red-500/10 hover:bg-red-500/20 border border-red-500/30
+           text-red-400 hover:text-red-300 rounded-lg text-sm
+           transition-all duration-200;
+  }
+
+  /* Input field */
+  .input-field {
+    @apply w-full px-4 py-2.5 rounded-lg text-sm
+           bg-surface-900/80 border border-surface-600
+           text-gray-100 placeholder-gray-500
+           focus:outline-none focus:border-brand-400 focus:ring-1 focus:ring-brand-400/30
+           transition-colors duration-150;
+  }
+
+  /* Select field */
+  .select-field {
+    @apply input-field appearance-none cursor-pointer;
+  }
+
+  /* Status badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  /* Stat card */
+  .stat-card {
+    @apply glass-card p-5 hover:border-surface-600/80 transition-all duration-300;
+  }
+
+  /* Table styles */
+  .data-table {
+    @apply w-full text-sm;
+  }
+  .data-table th {
+    @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider
+           text-gray-400 border-b border-surface-700;
+  }
+  .data-table td {
+    @apply px-4 py-3 border-b border-surface-800 text-gray-300;
+  }
+  .data-table tr:hover td {
+    @apply bg-surface-800/40;
+  }
+
+  /* Score ring colors */
+  .score-high   { @apply text-emerald-400; }
+  .score-medium { @apply text-amber-400; }
+  .score-low    { @apply text-red-400; }
+
+  /* Shimmer loading skeleton */
+  .skeleton {
+    @apply rounded-lg bg-surface-700/50;
+    background: linear-gradient(
+      90deg,
+      theme('colors.surface.700') 25%,
+      theme('colors.surface.600') 50%,
+      theme('colors.surface.700') 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+/* ── Utility Overrides ───────────────────────────────────── */
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-300 to-blue-400 bg-clip-text text-transparent;
+  }
+
+  .border-gradient {
+    border-image: linear-gradient(135deg, theme('colors.brand.400'), theme('colors.blue.500')) 1;
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
